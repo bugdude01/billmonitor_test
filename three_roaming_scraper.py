@@ -11,13 +11,25 @@ driver = webdriver.Chrome(PATH)
 driver.get("http://www.three.co.uk/Support/Roaming_and_international/Roaming_abroad")
 print (driver.title)
 
-search = driver.find_element_by_id("input-append-demo")
-search.clear()
-search.send_keys("Brazil")
-search.send_keys(Keys.RETURN)
+countries = ["Brazil", "South Africa", "Portugal", "Chile", "Iceland", "China", "Madagascar"]
 
-# Driver Tite should give title of current country page - can pull this off later to head
-# up details of scraped info
-print(driver.title)
+# Loop through countries
+for country in countries:
+
+	search = driver.find_element_by_id("input-append-demo")
+	search.clear()
+	search.send_keys(country)
+	search.send_keys(Keys.RETURN)
+
+	# Driver Tite should give title of current country page - can pull this off later to head
+	# up details of scraped info
+
+	# *** UPDATE *** Different pages present different tables. 2 column tables don't display the
+	# country in "driver.title" but DO show country in flag "Alt-text". need to setablish 
+	# what table is on the page and then either print driver.title OR flag-links alt-text
+	print(driver.title)
+
+	# go back to roaming abroad home page via initial link as bredcrumbs not consistent on older pages
+	driver.get("http://www.three.co.uk/Support/Roaming_and_international/Roaming_abroad")
 
 #driver.quit()
