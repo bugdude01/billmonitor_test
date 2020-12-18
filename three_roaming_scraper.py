@@ -11,7 +11,6 @@ driver = webdriver.Chrome(PATH)
 driver.get("http://www.three.co.uk/Support/Roaming_and_international/Roaming_abroad")
 print (driver.title)
 
-
 countries = ["Brazil", "South Africa", "Portugal", "Chile", "Iceland", "China", "Madagascar"]
 
 # Loop through countries
@@ -29,8 +28,6 @@ for country in countries:
 	except:
 
 		print(driver.title)
-
-
 
 	three_col_table = driver.find_element_by_class_name("clearfix")
 
