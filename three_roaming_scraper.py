@@ -23,20 +23,38 @@ for country in countries:
 
 	try: 
 		#look for an instance of a "flag-link", these only appear on the two-column table pages.
-		# if found then look for the data within the table for both monthly and PAYG
 		nation = driver.find_element_by_xpath("//*[@class='flag-links']/img[@alt]")
 		print("Mobile roaming in " + nation.get_attribute("alt") + " - Support - Three")
 
+		# if found then look for the data within the table for both monthly and PAYG
+		paym_cost = driver.find_element_by_xpath("//*[@class='roaming-charges-table']/tbody/tr[1]/td").text
+		print("Pay monthly")
+		print("Calling a UK number - " + paym_cost)
+
 		paygLink = driver.find_element_by_link_text("Pay As You Go")
 		paygLink.click()
+
+		paym_cost = driver.find_element_by_xpath("//*[@class='roaming-charges-table']/tbody/tr[1]/td").text
+		print("Pay monthly")
+		print("Calling a UK number - " + paym_cost)
 
 	except:
-		# otherwise look for the relevant data within the three-column table for both monthly and PAYG
 
 		print(driver.title)
+		# find pay monthly costs
+		paym_cost = driver.find_element_by_xpath("//*[@class='clearfix']/tbody/tr[1]/td[2]").text
+		print("Pay monthly")
+		print("Calling a UK number - " + paym_cost)
 
+		# click to PAYG table and find PAYG costs
 		paygLink = driver.find_element_by_link_text("Pay As You Go")
 		paygLink.click()
+		
+		payg_cost = driver.find_element_by_xpath("//*[@class='clearfix']/tbody/tr[1]/td[2]").text
+		print("PAYG")
+		print("Calling a UK number - " + payg_cost)
+		# otherwise look for the relevant data within the three-column table for both monthly and PAYG
+
 
 	three_col_table = driver.find_element_by_class_name("clearfix")
 
