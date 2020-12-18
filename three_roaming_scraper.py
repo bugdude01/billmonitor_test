@@ -27,47 +27,69 @@ for country in countries:
 		print("Mobile roaming in " + nation.get_attribute("alt") + " - Support - Three")
 
 		# if found then look for the data within the table for both monthly and PAYG
-		paym_cost = driver.find_element_by_xpath("//*[@class='roaming-charges-table']/tbody/tr[1]/td").text
+		paym_cost_1 = driver.find_element_by_xpath("//*[@class='roaming-charges-table']/tbody/tr[1]/td").text
+		paym_cost_2 = driver.find_element_by_xpath("//*[@class='roaming-charges-table']/tbody/tr[3]/td").text
+		paym_cost_3 = driver.find_element_by_xpath("//*[@class='roaming-charges-table']/tbody/tr[5]/td").text
+		paym_cost_4 = driver.find_element_by_xpath("//*[@class='roaming-charges-table']/tbody/tr[7]/td").text
 		print("Pay monthly")
-		print("Calling a UK number - " + paym_cost)
+		print("Calling a UK number - " + paym_cost_1)
+		print("Texts to UK - " + paym_cost_2)
+		print("Receiving calls from any number - " + paym_cost_3)
+		print("Using internet and data - " + paym_cost_4)
 
-		paygLink = driver.find_element_by_link_text("Pay As You Go")
-		paygLink.click()
-
-		paym_cost = driver.find_element_by_xpath("//*[@id='panel2']/section[2]/table/tbody/tr[1]/td").text
-		print("PAYG")
-		print("Calling a UK number - " + paym_cost)
 		print(" ")
-
-	except:
-
-		print(driver.title)
-		# find pay monthly costs
-		paym_cost = driver.find_element_by_xpath("//*[@class='clearfix']/tbody/tr[1]/td[2]").text
-		print("Pay monthly")
-		print("Calling a UK number - " + paym_cost)
 
 		# click to PAYG table and find PAYG costs
 		paygLink = driver.find_element_by_link_text("Pay As You Go")
 		paygLink.click()
 
-		payg_cost = driver.find_element_by_xpath("//*[@class='clearfix']/tbody/tr[1]/td[2]").text
+		payg_cost_1 = driver.find_element_by_xpath("//*[@id='panel2']/section[2]/table/tbody/tr[1]/td").text
+		payg_cost_2 = driver.find_element_by_xpath("//*[@id='panel2']/section[2]/table/tbody/tr[3]/td").text
+		payg_cost_3 = driver.find_element_by_xpath("//*[@id='panel2']/section[2]/table/tbody/tr[5]/td").text
+		payg_cost_4 = driver.find_element_by_xpath("//*[@id='panel2']/section[2]/table/tbody/tr[7]/td").text
 		print("PAYG")
-		print("Calling a UK number - " + payg_cost)
+		print("Calling a UK number - " + payg_cost_1)
+		print("Texts to UK - " + payg_cost_2)
+		print("Receiving calls from any number - " + payg_cost_3)
+		print("Using internet and data - " + payg_cost_4)
+
 		print(" ")
+		print("Next Country ")
+		print(" ")
+
+	except:
 		# otherwise look for the relevant data within the three-column table for both monthly and PAYG
 
+		print(driver.title)
+		# find pay monthly costs
+		paym_cost_1 = driver.find_element_by_xpath("//*[@class='clearfix']/tbody/tr[1]/td[2]").text
+		paym_cost_2 = driver.find_element_by_xpath("//*[@class='clearfix']/tbody/tr[3]/td[2]").text
+		paym_cost_3 = driver.find_element_by_xpath("//*[@class='clearfix']/tbody/tr[5]/td[2]").text
+		paym_cost_4 = driver.find_element_by_xpath("//*[@class='clearfix']/tbody/tr[7]/td[2]").text
+		print("Pay monthly")
+		print("Calling a UK number - " + paym_cost_1)
+		print("Texts to UK - " + paym_cost_2)
+		print("Receiving calls from any number - " + paym_cost_3)
+		print("Using internet and data - " + paym_cost_4)
+		print(" ")
 
-	#three_col_table = driver.find_element_by_class_name("clearfix")
+		# click to PAYG table and find PAYG costs
+		paygLink = driver.find_element_by_link_text("Pay As You Go")
+		paygLink.click()
 
-	# Driver Title should give title of current country page - can pull this off later to head
-	# up details of scraped info
+		payg_cost_1 = driver.find_element_by_xpath("//*[@class='clearfix']/tbody/tr[1]/td[2]").text
+		payg_cost_2 = driver.find_element_by_xpath("//*[@class='clearfix']/tbody/tr[3]/td[2]").text
+		payg_cost_3 = driver.find_element_by_xpath("//*[@class='clearfix']/tbody/tr[5]/td[2]").text
+		payg_cost_4 = driver.find_element_by_xpath("//*[@class='clearfix']/tbody/tr[7]/td[2]").text
+		print("PAYG")
+		print("Calling a UK number - " + payg_cost_1)
+		print("Texts to UK - " + payg_cost_2)
+		print("Receiving calls from any number - " + payg_cost_3)
+		print("Using internet and data - " + payg_cost_4)
 
-	# *** UPDATE *** Different pages present different tables. 2 column tables don't display the
-	# country in "driver.title" but DO show country in flag "Alt-text". need to setablish 
-	# what table is on the page and then either print driver.title OR flag-links alt-text
-
-	#if two_col_table:
+		print(" ")
+		print("Next Country ")
+		print(" ")
 
 
 	# go back to roaming abroad home page via initial link as bredcrumbs not consistent on older pages
