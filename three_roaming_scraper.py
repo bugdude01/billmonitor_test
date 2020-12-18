@@ -34,9 +34,10 @@ for country in countries:
 		paygLink = driver.find_element_by_link_text("Pay As You Go")
 		paygLink.click()
 
-		paym_cost = driver.find_element_by_xpath("//*[@class='roaming-charges-table']/tbody/tr[1]/td").text
-		print("Pay monthly")
+		paym_cost = driver.find_element_by_xpath("//*[@id='panel2']/section[2]/table/tbody/tr[1]/td").text
+		print("PAYG")
 		print("Calling a UK number - " + paym_cost)
+		print(" ")
 
 	except:
 
@@ -49,14 +50,15 @@ for country in countries:
 		# click to PAYG table and find PAYG costs
 		paygLink = driver.find_element_by_link_text("Pay As You Go")
 		paygLink.click()
-		
+
 		payg_cost = driver.find_element_by_xpath("//*[@class='clearfix']/tbody/tr[1]/td[2]").text
 		print("PAYG")
 		print("Calling a UK number - " + payg_cost)
+		print(" ")
 		# otherwise look for the relevant data within the three-column table for both monthly and PAYG
 
 
-	three_col_table = driver.find_element_by_class_name("clearfix")
+	#three_col_table = driver.find_element_by_class_name("clearfix")
 
 	# Driver Title should give title of current country page - can pull this off later to head
 	# up details of scraped info
