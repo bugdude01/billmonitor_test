@@ -22,12 +22,21 @@ for country in countries:
 	search.send_keys(Keys.RETURN)
 
 	try: 
+		#look for an instance of a "flag-link", these only appear on the two-column table pages.
+		# if found then look for the data within the table for both monthly and PAYG
 		nation = driver.find_element_by_xpath("//*[@class='flag-links']/img[@alt]")
 		print("Mobile roaming in " + nation.get_attribute("alt") + " - Support - Three")
 
+		paygLink = driver.find_element_by_link_text("Pay As You Go")
+		paygLink.click()
+
 	except:
+		# otherwise look for the relevant data within the three-column table for both monthly and PAYG
 
 		print(driver.title)
+
+		paygLink = driver.find_element_by_link_text("Pay As You Go")
+		paygLink.click()
 
 	three_col_table = driver.find_element_by_class_name("clearfix")
 
@@ -44,4 +53,4 @@ for country in countries:
 	# go back to roaming abroad home page via initial link as bredcrumbs not consistent on older pages
 	driver.get("http://www.three.co.uk/Support/Roaming_and_international/Roaming_abroad")
 
-#driver.quit()
+driver.quit()
